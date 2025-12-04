@@ -6,12 +6,15 @@
 
 ## Feature Highlights
 
-- **Responsive layout** with React + Tailwind-style utility classes (implemented via class names).
-- **Hero section** with animated badge, layered typography, and dual CTA (primary + secondary).
+- **Responsive layout** with React + Tailwind-style utility classes.
+- **Hero section** with animated badge, layered typography, and dual CTA.
 - **Features grid** describing AI assistants, automation, and integrations.
 - **Product demo** block for embedding screenshots or Loom videos.
-- **Pricing section** with tier toggles, most-popular highlight, and included vs. excluded features.
-- **Sticky scroll-to-top button** powered by React hooks for user-friendly navigation.
+- **Pricing section** with tier cards and feature comparison.
+- **Multi-page routing** with React Router (Home, About, Contact, SignUp, Login).
+- **Authentication pages** with social login options (Google, Facebook, GitHub).
+- **Sticky Navbar** with smooth scroll navigation to page sections.
+- **Scroll-to-top button** for user-friendly navigation.
 
 ---
 
@@ -41,22 +44,33 @@ npm run dev
 npm run build
 ```
 
-- Dev server defaults to `http://localhost:5173`.
+- Dev server defaults to `http://localhost:3000`.
 - Production assets output to `dist/` and can be deployed to Vercel, Netlify, Render, or any static host.
 
 ---
 
 ## Project Layout
 
-- `App.tsx` – Page shell, section ordering, scroll-to-top logic.
-- `components/Navbar.tsx` – Transparent navigation, logo, CTA.
-- `components/Hero.tsx` – Headline, supporting copy, CTA buttons, stat highlights.
-- `components/Features.tsx` – Modular feature cards with icons.
-- `components/ProductDemo.tsx` – Placeholder for video or carousel embed.
-- `components/Pricing.tsx` – Tier cards with feature lists and badges.
-- `components/Footer.tsx` – Links, contact, and social proof.
+```
+├── App.tsx              # Router setup
+├── pages/
+│   ├── Home.tsx         # Landing page
+│   ├── About.tsx        # About us page
+│   ├── Contact.tsx      # Contact form page
+│   ├── SignUp.tsx       # Registration page
+│   └── Login.tsx        # Login page
+├── components/
+│   ├── Navbar.tsx       # Navigation with sticky support
+│   ├── Hero.tsx         # Hero section
+│   ├── Features.tsx     # Feature cards
+│   ├── ProductDemo.tsx  # Demo section
+│   ├── Pricing.tsx      # Pricing tiers
+│   ├── Footer.tsx       # Site footer
+│   ├── ScrollToTop.tsx  # Route change scroll handler
+│   └── ScrollToTopButton.tsx  # Floating scroll button
+```
 
-Everything is split into clear, reusable React components so sections can be rearranged or swapped without touching the rest of the page.
+Everything is split into clear, reusable React components.
 
 ---
 

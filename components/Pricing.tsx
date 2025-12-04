@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Check, X } from 'lucide-react';
 
 const tiers = [
@@ -53,6 +54,16 @@ const tiers = [
 ];
 
 const Pricing: React.FC = () => {
+  const navigate = useNavigate();
+  
+  const handleButtonClick = (tier: typeof tiers[0]) => {
+    if (tier.cta === 'Contact Sales') {
+      navigate('/contact');
+    } else {
+      navigate('/signup');
+    }
+  };
+  
   return (
     <section id="pricing" className="py-24 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -86,10 +97,11 @@ const Pricing: React.FC = () => {
                 <span className="text-4xl font-display font-bold text-gray-900 tracking-tight">{tier.price}</span>
                 <span className="text-gray-400 ml-1 font-medium">{tier.frequency}</span>
               </div>
-              <p className="text-gray-500 text-sm mb-8 h-10 leading-relaxed">{tier.description}</p>
+              <p className="text-gray-500 text-base mb-8 h-10 leading-relaxed">{tier.description}</p>
 
               <button
-                className={`w-full py-3.5 rounded-xl font-bold text-sm mb-8 transition-all duration-300 ${
+                onClick={() => handleButtonClick(tier)}
+                className={`w-full py-3.5 rounded-xl font-bold text-base mb-8 transition-all duration-300 ${
                   tier.popular
                     ? 'btn-gradient text-white shadow-lg shadow-indigo-200 hover:shadow-indigo-300 hover:-translate-y-0.5'
                     : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:text-gray-900 border border-gray-100'
@@ -112,7 +124,7 @@ const Pricing: React.FC = () => {
                     <div className="p-0.5 rounded-full bg-gray-50 mt-0.5">
                         <X className="w-3 h-3 text-gray-400" />
                     </div>
-                    <span className="text-sm text-gray-500">{feature}</span>
+                    <span className="text-base text-gray-500">{feature}</span>
                   </div>
                 ))}
               </div>
